@@ -76,6 +76,22 @@ def logout():
 ###
 # The functions below should be applicable to all Flask apps.
 ###
+def filelisting():
+    rootdir=os.getcwd()
+    for subdir, dirs, files in os.walk(rootdir 
+                                    + '/app/static/uploads'):
+        for file in files:
+            print os.path.join(subdir, file)
+    return os.path.join(file)
+    
+    
+@app.route('/filelisting')
+def answer():
+    return filelisting()
+           
+
+
+
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):
@@ -102,4 +118,4 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    app.run(debug=True,host="0.0.0.0",port="8888")
+    app.run(debug=True,host="0.0.0.0",port="8080")
