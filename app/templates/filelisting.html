@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+
+{% block main %}
+
+
+<img src="{{ url_for('static', filename='uploads/' + image) }}" width="500px" height="750px"></img>
+
+<p>{{ name }}</p>
+
+{% endblock %}

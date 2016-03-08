@@ -77,19 +77,52 @@ def logout():
 # The functions below should be applicable to all Flask apps.
 ###
 def filelisting():
+    listing = []
     rootdir=os.getcwd()
     for subdir, dirs, files in os.walk(rootdir 
                                     + '/app/static/uploads'):
         for file in files:
             print os.path.join(subdir, file)
-    return os.path.join(file)
+            for file in files:
+                listing.append(os.path.join(file)) #subdir, 
+    list1 = listing
+    return list1[1]
     
+    
+def filelisting1():
+    listing = []
+    rootdir=os.getcwd()
+    for subdir, dirs, files in os.walk(rootdir 
+                                    + '/app/static/uploads'):
+        for file in files:
+            print os.path.join(subdir, file)
+            for file in files:
+                listing.append(os.path.join(subdir, file)) #subdir, 
+    list1 = listing
+    return list1[1]
     
 @app.route('/filelisting')
 def answer():
-    return filelisting()
+    image=filelisting()
+    name = filelisting1()
+    return render_template('filelisting.html', image=image, name=name) #filelisting()
            
 
+    
+@app.route('/test')
+def make_tree(path):
+    tree = dict(name=path, children=[])
+    try: lst = os.listdir(path)
+    except OSError:
+        pass #ignore errors
+    else:
+        for name in lst:
+            fn = os.path.join(path, name)
+            if os.path.isdir(fn):
+                tree['children'].append(make_tree(fn))
+            else:
+                tree['children'].append(dict(name=fn))
+    return tree
 
 
 
