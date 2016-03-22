@@ -86,7 +86,7 @@ def filelisting():
             for file in files:
                 listing.append(os.path.join(file)) #subdir, 
     list1 = listing
-    return list1[1]
+    return list1[0]
     
     
 def filelisting1():
@@ -99,7 +99,7 @@ def filelisting1():
             for file in files:
                 listing.append(os.path.join(subdir, file)) #subdir, 
     list1 = listing
-    return list1[1]
+    return list1[0]
     
 @app.route('/filelisting')
 def answer():
