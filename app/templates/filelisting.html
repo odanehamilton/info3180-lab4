@@ -8,9 +8,9 @@
 
 {% block main %}
 
+{% for img in image %}
+<img src="{{ url_for('static', filename='uploads/' + img) }}" width="500px" height="750px"></img><br/>
 
-<img src="{{ url_for('static', filename='uploads/' + image) }}" width="500px" height="750px"></img>
-
-<p>{{ name }}</p>
-
+<p>{{ img }}</p>
+{% endfor %}
 {% endblock %}

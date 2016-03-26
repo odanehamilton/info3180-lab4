@@ -82,30 +82,15 @@ def filelisting():
     for subdir, dirs, files in os.walk(rootdir 
                                     + '/app/static/uploads'):
         for file in files:
-            print os.path.join(subdir, file)
-            for file in files:
-                listing.append(os.path.join(file)) #subdir, 
-    list1 = listing
-    return list1[0]
+            listing.append(os.path.join(file)) #subdir, 
+    return listing
     
-    
-def filelisting1():
-    listing = []
-    rootdir=os.getcwd()
-    for subdir, dirs, files in os.walk(rootdir 
-                                    + '/app/static/uploads'):
-        for file in files:
-            print os.path.join(subdir, file)
-            for file in files:
-                listing.append(os.path.join(subdir, file)) #subdir, 
-    list1 = listing
-    return list1[0]
     
 @app.route('/filelisting')
 def answer():
     image=filelisting()
-    name = filelisting1()
-    return render_template('filelisting.html', image=image, name=name) #filelisting()
+  #  name = filelisting1()
+    return render_template('filelisting.html', image=image)#, name=name) #filelisting()
            
 
     
